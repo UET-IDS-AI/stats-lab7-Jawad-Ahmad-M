@@ -22,11 +22,9 @@ def uniform_analysis(a, n_samples=10000):
     mean_error = abs(sample_mean - theoretical_mean)
     variance_error = abs(sample_variance - theoretical_variance)
 
-    # Transformation Z = 2X + 1
-    z_samples = 2 * samples + 1
-
-    transformed_mean = np.mean(z_samples)
-    transformed_variance = np.var(z_samples)
+    # Theoretical transformation
+    transformed_mean = 2 * theoretical_mean + 1
+    transformed_variance = 4 * theoretical_variance
 
     return (
         theoretical_mean,
@@ -38,7 +36,6 @@ def uniform_analysis(a, n_samples=10000):
         transformed_mean,
         transformed_variance
     )
-
 
 if __name__ == "__main__":
     print("Implement uniform_analysis(a, n_samples=10000)")
