@@ -6,11 +6,29 @@ Lab: Uniform Random Variable Analysis
 
 import numpy as np
 
-
 def uniform_analysis(a, n_samples=10000):
-    """
-    Returns:
-    (
+    # Theoretical values
+    theoretical_mean = a / 2
+    theoretical_variance = (a ** 2) / 12
+
+    # Generate samples
+    samples = np.random.uniform(0, a, n_samples)
+
+    # Sample statistics
+    sample_mean = np.mean(samples)
+    sample_variance = np.var(samples)
+
+    # Errors
+    mean_error = abs(sample_mean - theoretical_mean)
+    variance_error = abs(sample_variance - theoretical_variance)
+
+    # Transformation Z = 2X + 1
+    z_samples = 2 * samples + 1
+
+    transformed_mean = np.mean(z_samples)
+    transformed_variance = np.var(z_samples)
+
+    return (
         theoretical_mean,
         theoretical_variance,
         sample_mean,
@@ -20,8 +38,6 @@ def uniform_analysis(a, n_samples=10000):
         transformed_mean,
         transformed_variance
     )
-    """
-    pass
 
 
 if __name__ == "__main__":
